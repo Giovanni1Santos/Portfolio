@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+
+/* Resetando margens e padding para evitar inconsistências entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo as cores principais do site */
+:root {
+    --primary-color: #567f7d;
+    --secondary-color: #fff;
+    --background-color: #f0f4f8;
+    --text-color: #333;
+    --link-hover-color: #1f3b3b;
+}
+
+/* Fonte e estilo base */
+body {
+    
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+header .box-img-header {
+    display: flex;
+    justify-content: space-between; /* Coloca o logo e o perfil nas extremidades */
+    align-items: center;
+    width: 100%; 
+}
+
+header .img-logo {
+    height: 50px;
+}
+
+header .img-perfil {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+/* Navegação */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-grow: 1; /* Permite que o nav ocupe o espaço restante */
+    position: absolute;
+    left: 50%; /* Posiciona o nav no centro */
+    transform: translateX(-50%); /* Ajusta para garantir que o nav fique perfeitamente centrado */
+}
+
+nav .nav-links {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+nav .nav-links:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+section{
+    padding: 4rem;
+}
+.first-section{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    min-height: 650px;
+    flex-wrap: wrap;
+}
+
+.first-section > div{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 300px;
+}
+h1{
+    font-size: 4rem;
+    letter-spacing: 8px;
+    color: var(--text-color);
+}
+.first-section p{
+    color: var(--text-color);
+}
+.first-section button{
+    width: 200px;
+}
+/* Estilo do botão "Saber mais" */
+button.Learn More {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Adiciona o cursor de ponteiro */
+    transition: background-color 0.3s;
+}
+
+button.Learn More:hover {
+    background-color: #2980b9;
+}
+
+/* Estilo do modal */
+dialog {
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: fixed; /* Usar fixed para posicionar o modal no centro da tela */
+    top: 50%; /* Coloca o modal no meio verticalmente */
+    left: 50%; /* Coloca o modal no meio horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta o modal para centralizar completamente */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border: none;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilo do texto dentro do modal */
+dialog p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Botão de fechar */
+dialog button.close {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Adiciona o cursor de ponteiro */
+    transition: background-color 0.3s;
+}
+
+dialog button.close:hover {
+    background-color: #c0392b;
+}
+
+/* Estilo de exibição do modal */
+dialog[open] {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.box-img-main {
+    max-width: 300px; /* Diminui o tamanho máximo do contêiner */
+    padding: 1rem;
+}
+
+.img-profile {
+    width: 80%; /* Ajusta o tamanho da imagem dentro do contêiner */
+    border-radius: 5%;
+}
+
+/* Conhecimentos */
+.second-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens horizontalmente */
+    justify-content: flex-start; /* Ajusta para deixar o conteúdo no topo */
+    padding: 20px 0; /* Adiciona espaçamento superior e inferior */
+    text-align: center; /* Centraliza o texto dentro da seção */
+}
+
+.second-section svg {
+    margin: 10px; /* Espaçamento entre os ícones */
+    width: 80px; /* Tamanho fixo dos ícones */
+    height: 80px; /* Tamanho fixo dos ícones */
+}
+
+/* Experiências Profissionais */
+.third-section {
+    padding: 40px 20px; /* Ajusta o padding da seção */
+    text-align: center; /* Centraliza o conteúdo da seção */
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-item {
+    padding: 10px 0; /* Reduz o espaçamento entre os itens */
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px; /* Espaçamento inferior entre os itens */
+}
+
+.timeline-item .timeline-content h3 {
+    font-size: 1.1rem; /* Reduz o tamanho da fonte do título */
+    font-weight: 600; /* Deixa o título um pouco mais leve */
+    margin-bottom: 4px; /* Reduz o espaço abaixo do título */
+}
+
+.timeline-item .timeline-content p {
+    font-size: 0.9rem; /* Reduz o tamanho da fonte do texto */
+    color: #666; /* Cor um pouco mais suave */
+    margin: 0; /* Remove margem extra */
+}
+
+/* Ajuste para a seção de experiências */
+.third-section .title {
+    font-size: 1.8rem; /* Tamanho menor do título da seção */
+    font-weight: 700; /* Deixa o título mais destacado */
+    margin-bottom: 30px; /* Ajuste para espaçar melhor o título da timeline */
+}
+
+#my-projects-list {
+    display: flex;
+    gap: 1.5rem; /* Reduz o espaçamento entre os itens */
+    padding: 1.5rem; /* Reduz o padding */
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%; /* Garante que a lista não ultrapasse a largura da tela */
+}
+
+#my-projects-list a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
+    transition: color 0.3s ease; /* Transição suave para mudança de cor */
+}
+
+#my-projects-list a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 2rem 5%; /* Reduz o padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Reduz o gap entre os itens */
+}
+
+footer > div {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Reduz o gap entre os itens do footer */
+    flex-wrap: wrap;
+}
