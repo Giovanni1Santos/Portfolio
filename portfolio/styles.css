@@ -18,27 +18,40 @@
 
 /* Fonte e estilo base */
 body {
-    
+    font-family: 'Lato', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
 }
 
-/* Header */
+/* Header Responsivo */
 header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    position: relative;
+}
+
+/* Menu Hamburguer - inicialmente escondido */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.5rem;
+    align-self: flex-start;
+    order: -1; /* Coloca no início do flex container */
+}
+
+/* Container do logo e foto de perfil */
+header .box-img-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10%;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-header .box-img-header {
-    display: flex;
-    justify-content: space-between; /* Coloca o logo e o perfil nas extremidades */
-    align-items: center;
-    width: 100%; 
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 header .img-logo {
@@ -51,38 +64,86 @@ header .img-perfil {
     width: 50px;
 }
 
-/* Navegação */
+/* Navegação Responsiva */
 nav {
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-grow: 1; /* Permite que o nav ocupe o espaço restante */
-    position: absolute;
-    left: 50%; /* Posiciona o nav no centro */
-    transform: translateX(-50%); /* Ajusta para garantir que o nav fique perfeitamente centrado */
+    width: 100%;
+    transition: all 0.3s ease;
 }
 
 nav .nav-links {
     text-decoration: none;
     color: var(--secondary-color);
     font-size: 1rem;
+    padding: 5px 10px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 nav .nav-links:hover {
     color: var(--link-hover-color);
     text-decoration: underline;
 }
-main{
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 3%;
+    }
+    
+    nav {
+        gap: 15px;
+    }
+    
+    nav .nav-links {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    
+    nav.active {
+        display: flex;
+    }
+    
+    nav .nav-links {
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    header .box-img-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Restante do seu CSS existente */
+main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-section{
+section {
     padding: 4rem;
 }
-.first-section{
+
+.first-section {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -91,23 +152,27 @@ section{
     flex-wrap: wrap;
 }
 
-.first-section > div{
+.first-section > div {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     min-width: 300px;
 }
-h1{
+
+h1 {
     font-size: 4rem;
     letter-spacing: 8px;
     color: var(--text-color);
 }
-.first-section p{
+
+.first-section p {
     color: var(--text-color);
 }
-.first-section button{
+
+.first-section button {
     width: 200px;
 }
+
 /* Estilo do botão "Saber mais" */
 button.Learn More {
     padding: 10px 20px;
@@ -116,7 +181,7 @@ button.Learn More {
     color: #fff;
     border: none;
     border-radius: 5px;
-    cursor: pointer; /* Adiciona o cursor de ponteiro */
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
@@ -132,10 +197,10 @@ dialog {
     width: 100%;
     background-color: #fff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: fixed; /* Usar fixed para posicionar o modal no centro da tela */
-    top: 50%; /* Coloca o modal no meio verticalmente */
-    left: 50%; /* Coloca o modal no meio horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta o modal para centralizar completamente */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: Arial, sans-serif;
     text-align: center;
     border: none;
@@ -160,7 +225,7 @@ dialog button.close {
     color: #fff;
     border: none;
     border-radius: 5px;
-    cursor: pointer; /* Adiciona o cursor de ponteiro */
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
@@ -175,12 +240,12 @@ dialog[open] {
 }
 
 .box-img-main {
-    max-width: 300px; /* Diminui o tamanho máximo do contêiner */
+    max-width: 300px;
     padding: 1rem;
 }
 
 .img-profile {
-    width: 80%; /* Ajusta o tamanho da imagem dentro do contêiner */
+    width: 80%;
     border-radius: 5%;
 }
 
@@ -188,22 +253,22 @@ dialog[open] {
 .second-section {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza os itens horizontalmente */
-    justify-content: flex-start; /* Ajusta para deixar o conteúdo no topo */
-    padding: 20px 0; /* Adiciona espaçamento superior e inferior */
-    text-align: center; /* Centraliza o texto dentro da seção */
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+    text-align: center;
 }
 
 .second-section svg {
-    margin: 10px; /* Espaçamento entre os ícones */
-    width: 80px; /* Tamanho fixo dos ícones */
-    height: 80px; /* Tamanho fixo dos ícones */
+    margin: 10px;
+    width: 80px;
+    height: 80px;
 }
 
 /* Experiências Profissionais */
 .third-section {
-    padding: 40px 20px; /* Ajusta o padding da seção */
-    text-align: center; /* Centraliza o conteúdo da seção */
+    padding: 40px 20px;
+    text-align: center;
 }
 
 .timeline {
@@ -213,45 +278,44 @@ dialog[open] {
 }
 
 .timeline-item {
-    padding: 10px 0; /* Reduz o espaçamento entre os itens */
+    padding: 10px 0;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 15px; /* Espaçamento inferior entre os itens */
+    margin-bottom: 15px;
 }
 
 .timeline-item .timeline-content h3 {
-    font-size: 1.1rem; /* Reduz o tamanho da fonte do título */
-    font-weight: 600; /* Deixa o título um pouco mais leve */
-    margin-bottom: 4px; /* Reduz o espaço abaixo do título */
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
 }
 
 .timeline-item .timeline-content p {
-    font-size: 0.9rem; /* Reduz o tamanho da fonte do texto */
-    color: #666; /* Cor um pouco mais suave */
-    margin: 0; /* Remove margem extra */
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
 }
 
-/* Ajuste para a seção de experiências */
 .third-section .title {
-    font-size: 1.8rem; /* Tamanho menor do título da seção */
-    font-weight: 700; /* Deixa o título mais destacado */
-    margin-bottom: 30px; /* Ajuste para espaçar melhor o título da timeline */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
 }
 
 #my-projects-list {
     display: flex;
-    gap: 1.5rem; /* Reduz o espaçamento entre os itens */
-    padding: 1.5rem; /* Reduz o padding */
+    gap: 1.5rem;
+    padding: 1.5rem;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 100%; /* Garante que a lista não ultrapasse a largura da tela */
+    max-width: 100%;
 }
 
 #my-projects-list a {
     text-decoration: none;
     color: var(--primary-color);
-    font-size: 1rem; /* Ajusta o tamanho da fonte */
-    transition: color 0.3s ease; /* Transição suave para mudança de cor */
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
 #my-projects-list a:hover {
@@ -262,16 +326,16 @@ dialog[open] {
 footer {
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    padding: 2rem 5%; /* Reduz o padding */
+    padding: 2rem 5%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Reduz o gap entre os itens */
+    gap: 1.5rem;
 }
 
 footer > div {
     display: flex;
     justify-content: center;
-    gap: 1.5rem; /* Reduz o gap entre os itens do footer */
+    gap: 1.5rem;
     flex-wrap: wrap;
 }
